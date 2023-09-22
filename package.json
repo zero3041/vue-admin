@@ -1,0 +1,27 @@
+{
+  "name": "vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@websanova/vue-auth": "^4.2.1",
+    "ant-design-vue": "^4.0.1",
+    "axios": "^1.5.0",
+    "bootstrap": "^5.3.1",
+    "dayjs": "^1.11.9",
+    "pinia": "^2.1.6",
+    "volar-service-vetur": "latest",
+    "vue": "^3.3.4",
+    "vue-request": "^2.0.3",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
+}
