@@ -223,7 +223,7 @@ export default defineComponent({
         })
         .then((response) => {
           if ((response.status = true)) {
-            message.success("Thêm mới sản phẩm thành công!");
+            message.success("Chỉnh sửa thành công");
             router.push({ name: "admin-products" });
           } else {
             message.error("Vui lòng thử lại");

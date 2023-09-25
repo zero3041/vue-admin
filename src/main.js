@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia';
 import router from './router/index.js'
+import VueAxios from 'vue-axios';
+import axios from 'axios';
 import { 
     Checkbox ,
     Input,
@@ -22,6 +24,8 @@ import 'ant-design-vue/dist/reset.css';
 
 
 const app = createApp(App);
+app.use(VueAxios, axios);
+
 app.use(router);
 app.use(createPinia());
 app.use(Button);

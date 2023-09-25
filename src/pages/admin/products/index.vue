@@ -1,5 +1,16 @@
 <template>
   <div class="mb-3 col-12 d-flex justify-content-end">
+    <a-select
+      v-model="selectedFilter"
+      style="width: 200px; margin-right: 10px"
+      placeholder="Lọc và sắp xếp"
+      @change="handleFilterChange"
+    >
+      <a-select-option value="price_low_to_high">Giá thấp đến cao</a-select-option>
+      <a-select-option value="price_high_to_low">Giá cao đến thấp</a-select-option>
+      <a-select-option value="name_alphabetical">Tên A-Z</a-select-option>
+      <a-select-option value="name_reverse_alphabetical">Tên Z-A</a-select-option>
+    </a-select>
     <router-link style="margin-right: 5px" :to="{ name: 'admin-products-create' }">
       <a-button type="primary">
         <plus-outlined />
@@ -71,6 +82,31 @@ export default {
     DeleteOutlined,
   },
   setup() {
+    const selectedFilter = ref("price_low_to_high"); // Giá trị mặc định cho lọc và sắp xếp
+
+    const handleFilterChange = (value) => {
+      selectedFilter.value = value;
+      applyFilter(value);
+    };
+
+    const applyFilter = (filterValue) => {
+      switch (filterValue) {
+        case "price_low_to_high":
+          products.value.sort((a, b) => a.discounted_price - b.discounted_price);
+          break;
+        case "price_high_to_low":
+          products.value.sort((a, b) => b.discounted_price - a.discounted_price);
+          break;
+        case "name_alphabetical":
+          products.value.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        case "name_reverse_alphabetical":
+          products.value.sort((a, b) => b.name.localeCompare(a.name));
+          break;
+        default:
+          break;
+      }
+    };
     const selectedProductIds = ref([]);
     useMenu().onSelectedKeys(["admin-products"]);
     const rowSelection = {
@@ -195,6 +231,8 @@ export default {
       columns,
       rowSelection,
       confirmDeleteSelectedProducts,
+      handleFilterChange,
+      applyFilter,
     };
   },
 };

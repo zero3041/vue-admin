@@ -1,6 +1,6 @@
-import bearer from 'vue-auth';
-import axios from 'axios';
-import router from '../router/index';
+import bearer from '@websanova/vue-auth/dist/drivers/auth/bearer';
+import axios from '@websanova/vue-auth/dist/drivers/http/axios.1.x';
+import router from '@websanova/vue-auth/dist/drivers/router/vue-router.2.x';
 
 const config = {
     auth: bearer,
@@ -9,13 +9,13 @@ const config = {
     tokenDefaultName: 'auth-token',
     tokenStore: ['cookie'],
     notFoundRedirect: {
-        path: '/home'
+        path: '/admins'
     },
-    registerData: {
-        url: '/api/auth/register',
-        method: 'POST',
-        redirect: null,
-    },
+    // registerData: {
+    //     url: '/api/auth/register',
+    //     method: 'POST',
+    //     redirect: null,
+    // },
     loginData: {
         url: '/api/auth/login',
         method: 'POST',
